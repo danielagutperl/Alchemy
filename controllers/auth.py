@@ -23,7 +23,7 @@ def register():
 def login():
     credentials = request.get_json()
     if not credentials:
-        return jsonify({'message': 'You are not authorised!'}), 401
+        return jsonify({'message': 'please provide a correct email and password combination, or register to mix drinks!'}), 401
     user = User.query.filter_by(email=credentials['email']).first()
 
     if not user or not user.validate_password(credentials['password']):
