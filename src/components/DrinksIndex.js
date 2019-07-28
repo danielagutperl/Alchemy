@@ -16,21 +16,35 @@ class DrinksIndex extends Component {
     this.props.history.push(`/drink/${value}`)
   }
 
+  addDefaultSrc = (ev) => {
+    ev.target.src = '/assets/drinks-jars.jpg'
+  }
+
   render() {
     const { drinks } = this.props
     if (!drinks) return null
     return (
-      <div>
+      <div className="drink-results">
         <ul>
           {
             drinks.map(drink => (
               <li
                 key={drink.id}
                 onClick={() => this.handleClick(drink.id)}>
-                {drink.name}
-                <figure>
-                  <img src={drink.image} alt={drink.name} />
-                </figure>
+                <div className="drink">
+                  <div>
+                    {drink.name}
+                    <div className="drink-ingredients">
+                      {drink.ingredients}
+                    </div>
+                  </div>
+                  <img
+                    src="/images/test.jpg"
+                    alt=""
+                    title={drink.name}
+                    onError={this.addDefaultSrc}
+                  />
+                </div>
               </li>
             ))
           }

@@ -1,7 +1,39 @@
 .hero {
-  background-image: './Users/daniela/Development/projects/Alchemy/src/assets/drinks-jars.jpg';
+  background-image: url('./assets/adam-birkett-Palm-b-groun-unsplash.jpg');
   background-size: cover;
   background-repeat: repeat;
   height: 800px;
 }
+
 // Photo by Kaizen Nguyễn on Unsplash
+.drink-results {
+  max-width: 600px;
+}
+
+.drink-results {
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  .drink {
+    display: flex;
+    align-items: cursor;
+    padding: 10px;
+    border-bottom: 1px solid black;
+    font-weight: 600;
+    background-color: white;
+    opacity: 0.5;
+
+    .drink-ingredients {
+      font-weight: 300;
+      opacity: 1;
+    }
+
+    img {
+      height: 100px;
+      min-width: 100px;
+      width: 100px;
+    }
+  }
+}

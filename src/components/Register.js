@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 
+import TextField from '@material-ui/core/TextField'
+
 class Register extends React.Component {
   constructor() {
     super()
@@ -40,50 +42,56 @@ class Register extends React.Component {
         <div>
           <h2>Register</h2>
           <div>
-            <label>Username</label>
             <div>
-              <input
+              <TextField
+                id="username"
+                label="Username"
                 name="username"
-                placeholder="Username"
+                type="username"
                 onChange={this.handleChange}
                 value={this.state.username}
+                margin="normal"
               />
             </div>
           </div>
           <div>
-            <label>Email</label>
             <div>
-              <input
+              <TextField
+                id="email"
+                label="Email Address"
                 name="email"
-                placeholder="Email"
+                type="email"
                 onChange={this.handleChange}
                 value={this.state.email}
+                margin="normal"
               />
             </div>
             {
             }
           </div>
           <div>
-            <label>Password</label>
             <div>
-              <input
-                type="password"
+              <TextField
+                id="password"
+                label="Password"
                 name="password"
-                placeholder="Password"
-                onChange={this.handleChange}
+                type="password"
                 value={this.state.password}
+                onChange={this.handleChange}
+                margin="normal"
               />
             </div>
           </div>
           <div>
-            <label>Password Confirmation</label>
             <div>
-              <input
-                type="password"
+              <TextField
+                id="password_confirmation"
+                label="Password Confirmation"
                 name="password_confirmation"
-                placeholder="Password Confirmation"
+                type="password_confirmation"
+                value={this.state.password_confirmation}
                 onChange={this.handleChange}
-                value={this.state.upasswordConfirmation}
+                margin="normal"
               />
             </div>
           </div>

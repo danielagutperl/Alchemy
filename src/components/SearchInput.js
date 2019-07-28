@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import TextField from '@material-ui/core/TextField'
 
 class SearchInput extends Component {
   // constructor() {
@@ -21,13 +22,14 @@ class SearchInput extends Component {
   render() {
     const { inputValue, onChange } = this.props
     return (
-      <input style={{ width: '100px' }}
-        className="input"
-        type="text"
-        name="Input"
-        placeholder="Search for a drink or ingredient"
+      <TextField
+        id="search_input"
+        label="Search Drinks"
+        name="search_input"
+        type="search_input"
         onChange={e => onChange(e.target.value)}
         value={inputValue}
+        margin="normal"
       />
     )
   }

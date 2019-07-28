@@ -3,7 +3,7 @@ import SearchContainer from './SearchContainer.js'
 
 const Home = () => (
   <section>
-    <div className='hero-gif'>
+    <div className="hero">
       <h1>
         Alchemy
       </h1>

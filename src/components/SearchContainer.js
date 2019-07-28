@@ -5,6 +5,8 @@ import SearchInput from './SearchInput'
 // import Button from './Button'
 import DrinksIndex from './DrinksIndex'
 
+import Button from '@material-ui/core/Button'
+
 
 class SearchContainer extends Component {
   constructor() {
@@ -40,10 +42,10 @@ class SearchContainer extends Component {
             onChange={value => this.setState({ inputValue: value })}
             inputValue={inputValue}
           />
-          <button
+          <Button variant="contained" size="large" color="primary"
             onClick={this.handleClick}>
-            Mix
-          </button>
+            Search
+          </Button>
         </div>
         <div>
           {drinks &&

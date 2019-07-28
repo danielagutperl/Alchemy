@@ -2,6 +2,12 @@ import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 import Auth from './Auth'
 
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+import DeleteIcon from '@material-ui/icons/Delete'
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab'
+
 class DrinkShow extends Component {
   constructor() {
     super()
@@ -105,10 +111,12 @@ class DrinkShow extends Component {
                 <h3>Mixology</h3>
                 <p>{drink.recipe}</p>
                 <hr />
-                {isDrinkOwner &&  <button
+                <h2>Comments</h2>
+                {isDrinkOwner &&  <Button size="medium" variant="contained" color="secondary"
                   onClick={() => this.handleDrinkDelete()}
-                >Delete
-                </button>}
+                >Delete Drink
+                  <DeleteIcon />
+                </Button>}
               </div>
             </div>
             <hr />
@@ -119,30 +127,34 @@ class DrinkShow extends Component {
                   <div>
                     {comment.content} - {new Date(comment.createdAt).toLocaleString()}
                   </div>
-                  {isCommentOwner &&  <button
+                  {isCommentOwner &&  <Fab size="small" aria-label="delete"
                     onClick={() => this.handleCommentDelete(comment)}
-                  >Delete
-                  </button>}
+                  ><DeleteIcon />
+                  </Fab>}
+
+
+
                 </div>
               )
             })}
-            <hr />
+            {!Auth.isAuthorised() &&
+            <p>To edit this drink or comment, please login!</p>}
             {Auth.isAuthorised() &&
             <form>
               <div>
-                <div>
-                  <textarea
-                    className="textarea"
-                    placeholder="Comment"
-                    onChange={this.handleChange}
-                    value={this.state.comment}
-                  >
-                  </textarea>
-                </div>
+                <TextField
+                  id="comment"
+                  label="Comment"
+                  name="comment"
+                  onChange={this.handleChange}
+                  value={this.state.comment}
+                  margin="normal"
+                />
               </div>
-              <button onClick={this.handleSubmit}>Comment</button>
+              <Fab size="small" color="primary" aria-label="add" onClick={this.handleSubmit}><AddIcon /></Fab>
             </form>}
           </Fragment>
+
         </div>
       </section>
     )

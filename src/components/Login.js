@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import TextField from '@material-ui/core/TextField'
 import Auth from './Auth'
 
 class Login extends React.Component {
@@ -41,27 +42,25 @@ class Login extends React.Component {
         <div>
           <h2>Login</h2>
           <div>
-            <label>Email</label>
-            <div>
-              <input
-                name="email"
-                placeholder="Email"
-                onChange={this.handleChange}
-                value={this.state.email}
-              />
-            </div>
+            <TextField
+              id="email"
+              label="Email Address"
+              name="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+              margin="normal"
+            />
           </div>
           <div>
-            <label>Password</label>
-            <div>
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                onChange={this.handleChange}
-                value={this.state.password}
-              />
-            </div>
+            <TextField
+              id="password"
+              label="Password"
+              name="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              margin="normal"
+            />
           </div>
           <button
             onClick={this.handleSubmit}

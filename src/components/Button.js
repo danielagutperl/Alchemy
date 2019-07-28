@@ -14,7 +14,7 @@ class Button extends Component {
     return (
       <button
         onClick={this.handleClick}>
-        Mix
+        Search
       </button>
     )
   }
