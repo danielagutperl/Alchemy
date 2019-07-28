@@ -1,13 +1,7 @@
-// console.log('boo')
-//
-// fetch('localhost:5432/alchemy')
-//   .then(res => res.json())
-//   .then(drinks => console.log(drinks))
-//   .catch(err => console.log(err))
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { HashRouter, BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import './style.scss'
 // import 'bulma'
@@ -16,30 +10,24 @@ import Home from './components/Home'
 import NavBar from './components/Navbar'
 import Register from './components/Register'
 import Login from './components/Login'
-// Register
-//Login
-// DrinkShow
-//DrinkIndex
-// DrinkNew
-// SecureRoute
+import DrinkNew from './components/DrinkNew'
+import ProtectedRoute from './components/ProtectedRoute'
+import DrinkShow from './components/DrinkShow'
 
 const App = () => {
   return(
-    <BrowserRouter>
+    <HashRouter>
       <main>
         <NavBar />
         <Switch>
-          {
-          //
-            // <Route path="/login" component={Login} />
-          }
           <Route path="/register" component={Register}/>
           <Route path="/login" component={Login} />
+          <ProtectedRoute path="/drinks/new" component={DrinkNew} />
+          <Route exact path="/drink/:id" component={DrinkShow} />
           <Route exact path="/" component={Home} />
         </Switch>
-        <Home />
       </main>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 

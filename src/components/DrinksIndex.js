@@ -1,29 +1,20 @@
 import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 class DrinksIndex extends Component {
   constructor() {
     super()
 
     this.state = {
-      drinks: null,
-      selected: null
+      drinks: null
     }
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick( e ) {
-    // e.persist() - what does this do??
-    console.log( 'selected: ', e )
-    this.setState( { selected: e }, () => this.props.history.push(`/${this.props.searchType.toLowerCase()}/${this.state.selected}`))
+  handleClick( value ) {
+    console.log( 'selected: ', value )
+    this.props.history.push(`/drink/${value}`)
   }
-
-  // componentDidMount() {
-  //   axios.get('/api/drinks')
-  //     .then(res => this.setState({ drinks: res.data }))
-  //     .catch(err => console.log(err))
-  // }
-  // index could be response from request using search result?
 
   render() {
     const { drinks } = this.props
@@ -36,10 +27,7 @@ class DrinksIndex extends Component {
               <li
                 key={drink.id}
                 onClick={() => this.handleClick(drink.id)}>
-                {
-                  // <Link to={`/drink/${drink._id}`}></Link>
-                }
-                {drink.name}{drink.id}
+                {drink.name}
                 <figure>
                   <img src={drink.image} alt={drink.name} />
                 </figure>
@@ -52,4 +40,4 @@ class DrinksIndex extends Component {
   }
 }
 
-export default DrinksIndex
+export default withRouter(DrinksIndex)

@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
-import SearchContainer from '/Users/daniela/Development/projects/Alchemy/src/components/SearchContainer.js'
+import SearchContainer from './SearchContainer.js'
 
 const Home = () => (
   <section>
-    <div className='hero'>
+    <div className='hero-gif'>
       <h1>
         Alchemy
       </h1>

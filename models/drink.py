@@ -3,7 +3,6 @@ from marshmallow import fields
 from .base import BaseModel, BaseSchema
 
 class Drink(db.Model, BaseModel):
-    # From the BaseModel, all models will now have a created_at and updated_at property that will be updated on save.
 
     __tablename__ = 'drinks'
 
@@ -11,21 +10,21 @@ class Drink(db.Model, BaseModel):
     image = db.Column(db.String(100), nullable=False)
     ingredients = db.Column(db.String(400), nullable=False)
     recipe = db.Column(db.String(1000), nullable=False)
+    drink_creator = db.Column(db.String(50))
 
 class DrinkSchema(ma.ModelSchema, BaseSchema):
 
     class Meta:
         model = Drink
-# TODO: get someone to explain this Meta thing again.
 
     comments = fields.Nested('CommentSchema', many=True, exclude=('drink', 'created_at', 'updated_at'))
-# TODO: ask about this ^^
 
 class Comment(db.Model, BaseModel):
 
     __tablename__ = 'comments'
 
     content = db.Column(db.Text, nullable=False)
+    comment_author = db.Column(db.String(50))
     drink_id = db.Column(db.Integer, db.ForeignKey('drinks.id'))
     drink = db.relationship('Drink', backref='comments')
 

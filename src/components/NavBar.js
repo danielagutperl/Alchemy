@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-// import Auth from '../../lib/Auth'
+import Auth from './Auth'
 
 class NavBar extends React.Component {
   constructor() {
@@ -14,6 +14,8 @@ class NavBar extends React.Component {
     return (
       <nav>
         <Link to="/">Home</Link>
+        {!Auth.isAuthorised() && <Link to="/register">Register</Link>}
+        {!Auth.isAuthorised() && <Link to="/login">Login</Link>}
         <a onClick={this.toggleNavbar}>
           <span>-</span>
           <span>-</span>

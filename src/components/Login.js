@@ -8,8 +8,10 @@ class Login extends React.Component {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      error: undefined
     }
+
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -19,17 +21,17 @@ class Login extends React.Component {
     this.setState({ [name]: value })
   }
 
-  handleSubmit(e) {
-    // e.preventDefault() not required unless type submit button
+  handleSubmit() {
+
     axios.post('http://localhost:5000/api/login', this.state)
       .then(res => {
-        debugger
         Auth.setToken(res.data.token)
-        this.props.history.push('/dinosaurs')
+        Auth.setUserName(res.data.username)
+        this.props.history.push('/drinks')
       })
       .catch((err) => {
         console.log(err)
-        this.setState({ error: 'Invalid Crendentials'});
+        this.setState({ error: 'Invalid Crendentials'})
       })
   }
 
@@ -42,7 +44,6 @@ class Login extends React.Component {
             <label>Email</label>
             <div>
               <input
-                // error for if not login or wrong
                 name="email"
                 placeholder="Email"
                 onChange={this.handleChange}
@@ -61,9 +62,6 @@ class Login extends React.Component {
                 value={this.state.password}
               />
             </div>
-            {
-            // if error &&
-            }
           </div>
           <button
             onClick={this.handleSubmit}

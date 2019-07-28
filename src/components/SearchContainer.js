@@ -1,30 +1,38 @@
 import React, { Fragment, Component } from 'react'
+import axios from 'axios'
 
 import SearchInput from './SearchInput'
-import Button from './Button'
+// import Button from './Button'
 import DrinksIndex from './DrinksIndex'
+
 
 class SearchContainer extends Component {
   constructor() {
     super()
     this.state = {
+      drinks: [],
       loading: false,
       inputValue: ''
     }
-
-    // setInterval(() => {
-    //   this.setState({ inputValue: Math.random() })
-    // }, 3000)
 
     this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick() {
-    console.log(this.state.inputValue)
+    const { inputValue } = this.state
+    axios.get('http://localhost:5000/api/drinks')
+      .then(res => {
+        const filteredDrinks = res.data.filter(drink => {
+          return drink.name.toLowerCase().indexOf(inputValue.toLowerCase()) > -1
+          || drink.ingredients.toLowerCase().indexOf(inputValue.toLowerCase()) > -1
+        })
+        this.setState({ drinks: filteredDrinks })
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
-    const { inputValue } = this.state
+    const { drinks, inputValue } = this.state
     return (
       <Fragment>
         <div>
@@ -32,13 +40,14 @@ class SearchContainer extends Component {
             onChange={value => this.setState({ inputValue: value })}
             inputValue={inputValue}
           />
-          <Button
-            onClick={this.handleClick}
-          />
+          <button
+            onClick={this.handleClick}>
+            Mix
+          </button>
         </div>
         <div>
-          {this.state.destinations &&
-            <DrinksIndex drinks={this.state.drinks} />
+          {drinks &&
+            <DrinksIndex drinks={drinks} />
           }
         </div>
       </Fragment>
