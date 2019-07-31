@@ -11,7 +11,7 @@
     "postinstall": "[ \"$NODE_ENV\" = \"production\" ] && yarn build || exit 0"
   },
   "engines": {
-    "node": "6.11.1"
+    "node": "12.3.0"
   },
   "author": "",
   "license": "ISC",
