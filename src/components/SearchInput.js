@@ -22,9 +22,9 @@ class SearchInput extends Component {
   render() {
     const { inputValue, onChange } = this.props
     return (
-      <TextField
+      <TextField className="medium-textfield"
         id="search_input"
-        label="Search Drinks"
+        label="Search Drinks or Ingredients"
         name="search_input"
         type="search_input"
         onChange={e => onChange(e.target.value)}

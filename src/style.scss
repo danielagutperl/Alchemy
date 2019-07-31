@@ -1,12 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+
+home {
+  margin-left: 250px
+}
+
+.home {
+  h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 5em;
+  margin-top: 10px;
+
+
+  }
+}
+
 .hero {
   background-image: url('./assets/adam-birkett-Palm-b-groun-unsplash.jpg');
   background-size: cover;
   background-repeat: repeat;
-  height: 800px;
+  height: 100%;
+}
+
+.link-font {
+  color: white;
+  text-decoration: none;
 }
 
 // Photo by Kaizen Nguyễn on Unsplash
+
+
 .drink-results {
+  position: relative;
+  top: -100vh;
   max-width: 600px;
 }
 
@@ -22,18 +47,42 @@
     padding: 10px;
     border-bottom: 1px solid black;
     font-weight: 600;
-    background-color: white;
-    opacity: 0.5;
+    // background-color: white;
 
     .drink-ingredients {
       font-weight: 300;
-      opacity: 1;
     }
 
     img {
-      height: 100px;
-      min-width: 100px;
       width: 100px;
+      min-width: 90px;
+      max-height: 70px;
     }
   }
+}
+
+.show-image {
+  img {
+    width: 40vw;
+  }
+}
+
+.wide-textfield {
+  width: 80vw;
+}
+
+.medium-textfield {
+  width: 50vw;
+}
+
+.login-section {
+  margin-left: 250px;
+}
+
+.register-section {
+  margin-left: 250px;
+}
+
+.drink-new-section {
+  margin-left: 250px;
 }

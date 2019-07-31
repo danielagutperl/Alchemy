@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
+import Container from '@material-ui/core/Container'
+import Typography from '@material-ui/core/Typography'
+
 class DrinksIndex extends Component {
   constructor() {
     super()
@@ -22,8 +25,12 @@ class DrinksIndex extends Component {
 
   render() {
     const { drinks } = this.props
-    if (!drinks) return null
+    if (!drinks || drinks.length < 1) return null
     return (
+      <>
+      <Container className="material-container" maxWidth="sm" style={{ backgroundColor: 'white', opacity: 0.8, height: '100vh' }}>
+        <div></div>
+      </Container>
       <div className="drink-results">
         <ul>
           {
@@ -39,7 +46,7 @@ class DrinksIndex extends Component {
                     </div>
                   </div>
                   <img
-                    src="/images/test.jpg"
+                    src={drink.image}
                     alt=""
                     title={drink.name}
                     onError={this.addDefaultSrc}
@@ -50,6 +57,7 @@ class DrinksIndex extends Component {
           }
         </ul>
       </div>
+      </>
     )
   }
 }

@@ -17,7 +17,7 @@ class DrinkSchema(ma.ModelSchema, BaseSchema):
     class Meta:
         model = Drink
 
-    comments = fields.Nested('CommentSchema', many=True, exclude=('drink', 'created_at', 'updated_at'))
+    comments = fields.Nested('CommentSchema', many=True, exclude=('drink', 'updated_at'))
 
 class Comment(db.Model, BaseModel):
 

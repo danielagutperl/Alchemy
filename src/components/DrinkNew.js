@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Auth from './Auth'
 import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 
 class DrinkNew extends Component {
   constructor() {
@@ -43,47 +44,45 @@ class DrinkNew extends Component {
   render() {
     console.log(this.state)
     return (
-      <section>
+      <section className="drink-new-section">
         <div>
+          <h2>Mix a new drink</h2>
           <div>
-            <h2>Mix a new drink</h2>
-            <div>
-              <TextField
-                id="name"
-                label="Drink Name"
-                name="name"
-                type="name"
-                onChange={this.handleChange}
-                value={this.state.name}
-                margin="normal"
-              />
-            </div>
-            <div>
-              <TextField
-                id="image"
-                label="Image Url"
-                name="image"
-                type="image"
-                onChange={this.handleChange}
-                value={this.state.image}
-                margin="normal"
-              />
-            </div>
-            <div>
-              <TextField
-                id="ingredients"
-                label="Ingredients"
-                name="ingredients"
-                type="ingredients"
-                multiline
-                onChange={this.handleChange}
-                value={this.state.ingredients}
-                margin="normal"
-              />
-            </div>
+            <TextField
+              id="name"
+              label="Drink Name"
+              name="name"
+              type="name"
+              onChange={this.handleChange}
+              value={this.state.name}
+              margin="normal"
+            />
           </div>
           <div>
             <TextField
+              id="image"
+              label="Image URL"
+              name="image"
+              type="text"
+              onChange={this.handleChange}
+              value={this.state.image}
+              margin="normal"
+            />
+          </div>
+          <div>
+            <TextField className="wide-textfield"
+              id="ingredients"
+              label="Ingredients"
+              name="ingredients"
+              type="ingredients"
+              multiline
+              onChange={this.handleChange}
+              value={this.state.ingredients}
+              margin="normal"
+            />
+          </div>
+          <div>
+            <TextField className="wide-textfield"
               id="recipe"
               label="Recipe"
               name="recipe"
@@ -94,10 +93,10 @@ class DrinkNew extends Component {
               margin="normal"
             />
           </div>
-          <button
+          <Button variant="contained" color="secondary"
             onClick={this.handleSubmit}
           >Submit
-          </button>
+          </Button>
         </div>
       </section>
     )

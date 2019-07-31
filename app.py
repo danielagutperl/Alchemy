@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from config.env import db_uri
 
-app = Flask(__name__)
+app = Flask(__name__, static-folder='dist')
 CORS(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri

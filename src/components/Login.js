@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 import Auth from './Auth'
 
 class Login extends React.Component {
@@ -38,7 +39,7 @@ class Login extends React.Component {
 
   render(){
     return (
-      <section>
+      <section className="login-section">
         <div>
           <h2>Login</h2>
           <div>
@@ -62,10 +63,10 @@ class Login extends React.Component {
               margin="normal"
             />
           </div>
-          <button
+          <Button variant="contained" color="primary"
             onClick={this.handleSubmit}
           >Login
-          </button>
+          </Button>
         </div>
       </section>
     )

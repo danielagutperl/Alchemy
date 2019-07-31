@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 
 class Register extends React.Component {
   constructor() {
@@ -38,7 +39,7 @@ class Register extends React.Component {
   render() {
     console.log(this.state)
     return (
-      <section >
+      <section className="register-section">
         <div>
           <h2>Register</h2>
           <div>
@@ -86,19 +87,19 @@ class Register extends React.Component {
             <div>
               <TextField
                 id="password_confirmation"
-                label="Password Confirmation"
+                label="Confirm Password"
                 name="password_confirmation"
-                type="password_confirmation"
+                type="password"
                 value={this.state.password_confirmation}
                 onChange={this.handleChange}
                 margin="normal"
               />
             </div>
           </div>
-          <button
+          <Button variant="contained" color="primary"
             onClick={this.handleSubmit}
-          >Submit
-          </button>
+          >Register
+          </Button>
         </div>
       </section>
     )

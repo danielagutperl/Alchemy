@@ -5,7 +5,7 @@ import Auth from './Auth'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import DeleteIcon from '@material-ui/icons/Delete'
-import AddIcon from '@material-ui/icons/Add';
+import AddIcon from '@material-ui/icons/Add'
 import Fab from '@material-ui/core/Fab'
 
 class DrinkShow extends Component {
@@ -31,7 +31,7 @@ class DrinkShow extends Component {
   }
 
   getData() {
-    axios.get(`http://localhost:5000/api/drinks/${this.props.match.params.id}`)
+    axios.get(`/api/drinks/${this.props.match.params.id}`)
       .then(res => this.setState({ drink: res.data }))
       .catch(err => console.log(err))
     console.log(this.state)
@@ -77,6 +77,9 @@ class DrinkShow extends Component {
 
     console.log(this.state)
     const isDrinkOwner = drink.drink_creator === Auth.getUserName()
+    console.log(isDrinkOwner)
+    console.log(drink.drink_creator)
+    console.log(Auth.getUserName())
     return (
       <section>
         <div>
@@ -85,7 +88,7 @@ class DrinkShow extends Component {
             <hr />
             <div>
               <div>
-                <figure>
+                <figure className="show-image">
                   <img src={drink.image} alt={drink.name} />
                 </figure>
               </div>
@@ -110,22 +113,22 @@ class DrinkShow extends Component {
                 }
                 <h3>Mixology</h3>
                 <p>{drink.recipe}</p>
-                <hr />
-                <h2>Comments</h2>
-                {isDrinkOwner &&  <Button size="medium" variant="contained" color="secondary"
+                {!!Auth.getUserName() && isDrinkOwner &&  <Button size="medium" variant="contained" color="secondary"
                   onClick={() => this.handleDrinkDelete()}
                 >Delete Drink
                   <DeleteIcon />
                 </Button>}
+                <hr />
+                <h2>Comments</h2>
               </div>
             </div>
             <hr />
             {drink.comments.map(comment => {
               const isCommentOwner = comment.comment_author === Auth.getUserName()
               return (
-                <div key={comment._id}>
+                <div key={comment.id}>
                   <div>
-                    {comment.content} - {new Date(comment.createdAt).toLocaleString()}
+                    {comment.content} - {new Date(comment.created_at).toLocaleString()}
                   </div>
                   {isCommentOwner &&  <Fab size="small" aria-label="delete"
                     onClick={() => this.handleCommentDelete(comment)}
