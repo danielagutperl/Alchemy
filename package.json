@@ -7,11 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve:front": "webpack-dev-server --mode=development",
     "serve:back": "pipenv yarn run flask run",
-    "engines": {
-      "node": "6.11.1"
-    },
     "build": "webpack -p",
     "postinstall": "[ \"$NODE_ENV\" = \"production\" ] && yarn build || exit 0"
+  },
+  "engines": {
+    "node": "6.11.1"
   },
   "author": "",
   "license": "ISC",
