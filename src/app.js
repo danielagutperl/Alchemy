@@ -11,7 +11,7 @@ import theme from './theme'
 
 
 import Home from './components/Home'
-import NavBar from './components/Navbar'
+import NavBar from './components/NavBar'
 import Register from './components/Register'
 import Login from './components/Login'
 import DrinkNew from './components/DrinkNew'
