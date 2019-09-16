@@ -11,7 +11,7 @@ router = Blueprint(__name__, 'drinks')
 drink_schema = DrinkSchema()
 comment_schema = CommentSchema()
 
-@router.route('/drinks', methods=['GET'])
+@router.route('/', methods=['GET'])
 def index():
 
     drinks = Drink.query.all()
