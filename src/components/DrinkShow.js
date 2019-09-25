@@ -43,7 +43,7 @@ class DrinkShow extends Component {
       comment_author: Auth.getUserName(),
       content: this.state.comment
     }
-    axios.post(`http://localhost:5000/api/drinks/${this.props.match.params.id}/comments`, data, {
+    axios.post(`http://localhost:5432/api/drinks/${this.props.match.params.id}/comments`, data, {
       headers: { 'Authorization': `${Auth.getToken()}`, 'Content-Type': 'application/json' }
     })
       .then(() => {
@@ -53,7 +53,7 @@ class DrinkShow extends Component {
   }
 
   handleCommentDelete(comment) {
-    axios.delete(`http://localhost:5000/api/drinks/${this.props.match.params.id}/comments/${comment.id}`, {
+    axios.delete(`http://localhost:5432/api/drinks/${this.props.match.params.id}/comments/${comment.id}`, {
       headers: { 'Authorization': Auth.getToken() }
     })
       .then(() => this.getData())
@@ -61,7 +61,7 @@ class DrinkShow extends Component {
   }
 
   handleDrinkDelete() {
-    axios.delete(`http://localhost:5000/api/drink/${this.props.match.params.id}`, {
+    axios.delete(`http://localhost:5432/api/drink/${this.props.match.params.id}`, {
       headers: { 'Authorization': Auth.getToken() }
     })
       .then(() => {
