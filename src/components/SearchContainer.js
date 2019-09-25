@@ -22,7 +22,7 @@ class SearchContainer extends Component {
 
   handleClick() {
     const { inputValue } = this.state
-    axios.get('http://localhost:5432/api/drinks')
+    axios.get('http://localhost:5000/api/drinks')
       .then(res => {
         const filteredDrinks = res.data.filter(drink => {
           return drink.name.toLowerCase().indexOf(inputValue.toLowerCase()) > -1

@@ -29,7 +29,7 @@ class DrinkNew extends Component {
       ...this.state,
       drink_creator: Auth.getUserName()
     }
-    axios.post('http://localhost:5432/api/drinks', data, {
+    axios.post('http://localhost:5000/api/drinks', data, {
       headers: { 'Authorization': `${Auth.getToken()}` }
     })
       .then((res) => {

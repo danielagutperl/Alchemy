@@ -25,7 +25,7 @@ class Login extends React.Component {
 
   handleSubmit() {
 
-    axios.post('http://localhost:5432/api/login', this.state)
+    axios.post('http://localhost:5000/api/login', this.state)
       .then(res => {
         Auth.setToken(res.data.token)
         Auth.setUserName(res.data.username)

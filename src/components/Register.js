@@ -26,7 +26,7 @@ class Register extends React.Component {
   }
 
   handleSubmit() {
-    axios.post('http://localhost:5432/api/register', this.state)
+    axios.post('http://localhost:5000/api/register', this.state)
       .then(() => {
         this.props.history.push('/login')
       })
