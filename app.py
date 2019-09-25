@@ -19,7 +19,7 @@ bcrypt = Bcrypt(app)
 # from models.drink import Drink, DrinkSchema
 # this has to go after ma ^^
 # drink_schema = DrinkSchema(many=True)
-# TODO: I dont think I need this here any more..? If so ask what for.
+# TODO: I dont think I need this here any more..? 
 
 # FOR TESTING:
 # # @app.route('/')

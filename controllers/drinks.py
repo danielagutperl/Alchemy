@@ -11,9 +11,8 @@ router = Blueprint(__name__, 'drinks')
 drink_schema = DrinkSchema()
 comment_schema = CommentSchema()
 
-@router.route('/', methods=['GET'])
+@router.route('/drinks', methods=['GET'])
 def index():
-
     drinks = Drink.query.all()
     return drink_schema.jsonify(drinks, many=True), 200
 
